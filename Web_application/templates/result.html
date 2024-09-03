@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Result</h1>
+        <div class="segment">
+            <p><strong>File uploaded:</strong> {{ filename }}</p>
+            <audio controls>
+                <source src="{{ audio_path }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="segment">
+            <h2>Classification Results</h2>
+            <p><strong>Predicted Sex:</strong> {{ sex }}</p>
+            <p><strong>Male Probability:</strong> {{ male_prob * 100|round(2) }}%</p>
+            <p><strong>Female Probability:</strong> {{ female_prob * 100|round(2) }}%</p>
+        </div>
+        <div class="segment">
+            <h2>Waveform</h2>
+            <img src="{{ plot_path_waveform }}" alt="Waveform plot">
+        </div>
+        <div class="segment">
+            <h2>Spectrogram</h2>
+            <img src="{{ plot_path_spectrogram }}" alt="Spectrogram plot">
+        </div>
+        <div class="segment">
+            <a href="/">Upload another file</a>
+        </div>
+    </div>
+</body>
+</html>
